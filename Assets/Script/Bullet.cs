@@ -15,6 +15,6 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(dir * speed * 0.01f);
+        GetComponent<Rigidbody2D>().velocity = dir * speed;
     }
 }

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject timer;
     TextMeshPro timeText;
     private float time;
-    private float TimeLimit = 30f; //second
+    private float TimeLimit = 300f; //second
 
     private void Start()
     {

@@ -17,21 +17,23 @@ public class Player : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        transform.position = new Vector3(transform.position.x + 0.01f*speed*h,transform.position.y + 0.01f*speed*v, 0f);
+        if (h != 0 || v != 0)
+        {
+            float angle = Mathf.Atan2(v, h) * Mathf.Rad2Deg;
+
+            GetComponent<Rigidbody2D>().rotation = angle;
+        }
+        GetComponent<Rigidbody2D>().velocity = new Vector3(h, v, 0f).normalized * speed;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Finish")
-        {
-            Debug.Log("성공!");
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
         if (collision.gameObject.tag == "Obstacle")
         {
-            Destroy(this.gameObject);
-            Debug.Log("게임오버 (탄환 맞음)");
+            Debug.Log("게임오버 (" + collision.gameObject.name + "에 충돌)");
+        }
+        else if (collision.gameObject.tag == "Finish")
+        {
+            Debug.Log("성공!");
         }
     }
 }

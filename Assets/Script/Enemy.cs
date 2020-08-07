@@ -21,21 +21,12 @@ public class Enemy : MonoBehaviour
         {
             case Mods.STATIC:
             {
-            GameObject instance1 = Instantiate(Bullet, transform.position, transform.rotation);
-                instance1.GetComponent<Bullet>().dir = Vector3.up;
-                GameObject instance2 = Instantiate(Bullet, transform.position, transform.rotation);
-                instance2.GetComponent<Bullet>().dir = Vector3.down;
-                GameObject instance3 = Instantiate(Bullet, transform.position, transform.rotation);
-                instance3.GetComponent<Bullet>().dir = Vector3.left;
-                GameObject instance4 = Instantiate(Bullet, transform.position, transform.rotation);
-                instance4.GetComponent<Bullet>().dir = Vector3.right;
+                GameObject instance1 = Instantiate(Bullet, transform.position, transform.rotation);
+                instance1.GetComponent<Bullet>().dir = Quaternion.Euler(transform.rotation.eulerAngles) * Vector3.right;
                 yield return new WaitForSeconds(delay);
                 StartCoroutine("InstGo", delay);
                 yield return new WaitForSeconds(10.0f);
                 Destroy(instance1);
-                Destroy(instance2);
-                Destroy(instance3);
-                Destroy(instance4);
                 break;
             }
             case Mods.CHASING:
