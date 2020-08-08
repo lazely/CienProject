@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    static public Player instance { get; private set; }
     public float speed = 10f;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
 
