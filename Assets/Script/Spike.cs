@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
-    ButtonManager button;
+    public GameObject buttonObject;
+    private Button button;
     private Collider2D col;
     private SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
@@ -13,7 +14,7 @@ public class Spike : MonoBehaviour
     {
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        button = ButtonManager.instance;
+        button = buttonObject.GetComponent<Button>();
     }
 
     // Update is called once per frame

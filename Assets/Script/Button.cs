@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    ButtonManager button;
+    public bool is_checked;
     void Start()
     {
-        button = ButtonManager.instance;
+        is_checked = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            button.is_checked = button.is_checked ? false : true;
+            is_checked = is_checked ? false : true;
         }
     }
 }
