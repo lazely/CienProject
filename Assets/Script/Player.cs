@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Finish")
         {
+            GameManager.instance.NextStage();
             Debug.Log("성공!");
         }
     }
