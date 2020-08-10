@@ -13743,7 +13743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &531997952
 Transform:
   m_ObjectHideFlags: 0
@@ -24355,9 +24355,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04267031, y: -0.0020855665}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.26299375
+  m_Radius: 1.5
 --- !u!212 &1955196940
 SpriteRenderer:
   m_ObjectHideFlags: 0
