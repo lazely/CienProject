@@ -9,12 +9,14 @@ public class Spike : MonoBehaviour
     private Collider2D col;
     private SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
+
     // Start is called before the first frame update
     void Start()
     {
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         button = buttonObject.GetComponent<Button>();
+
     }
 
     // Update is called once per frame
