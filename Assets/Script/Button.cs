@@ -19,12 +19,14 @@ public class Button : MonoBehaviour
             is_checked = is_checked ? false : true;
             if (is_checked == false)
             {
-                yield return new WaitForSeconds(interv - 1);
+                yield return new WaitForSeconds(interv);
+                interv = 4f;
                 StartCoroutine("OnOff");
             }
             else
             {
-                yield return new WaitForSeconds(interv + 1);
+                yield return new WaitForSeconds(interv);
+                interv = 2f;
                 StartCoroutine("OnOff");
             }
         }

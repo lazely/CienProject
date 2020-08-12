@@ -105,14 +105,14 @@ public class GameManager : MonoBehaviour
     {
         if(CurrentStage != 0)
         {
-            GameObject.Find("Stage").transform.Find("Stage " + CurrentStage.ToString()).gameObject.SetActive(false);
+            GameObject.Find("Grid").transform.Find("Stage " + CurrentStage.ToString()).gameObject.SetActive(false);
         }
         CurrentStage++;
         if(CurrentStage >= 9)
         {
             CurrentStage = 1;
         }
-        GameObject.Find("Stage").transform.Find("Stage " + CurrentStage.ToString()).gameObject.SetActive(true);
+        GameObject.Find("Grid").transform.Find("Stage " + CurrentStage.ToString()).gameObject.SetActive(true);
         MainCamera.transform.position = Level_Info[CurrentStage].Camera_pos;
         MainCamera.orthographicSize = Level_Info[CurrentStage].Camera_size;
         Player.transform.position = Level_Info[CurrentStage].Player_pos;
