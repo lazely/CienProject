@@ -26,7 +26,8 @@ public class Enemy : MonoBehaviour
             case Mods.STATIC:
             {
                 GameObject instance1 = Instantiate(Bullet, transform.position, transform.rotation);
-                instance1.GetComponent<Bullet>().dir = Quaternion.Euler(transform.rotation.eulerAngles) * Vector3.right;
+                    instance1.transform.parent = transform;
+                    instance1.GetComponent<Bullet>().dir = Quaternion.Euler(transform.rotation.eulerAngles) * Vector3.right;
                 yield return new WaitForSeconds(delay);
                 StartCoroutine("InstGo", delay);
                 yield return new WaitForSeconds(10.0f);
@@ -36,10 +37,12 @@ public class Enemy : MonoBehaviour
             case Mods.AUTO:
             {
                 GameObject instance1 = Instantiate(Bullet, transform.position, transform.rotation);
-                instance1.GetComponent<Bullet>().dir = Quaternion.Euler(transform.rotation.eulerAngles) * Vector3.right;
+                    instance1.transform.parent = transform;
+                    instance1.GetComponent<Bullet>().dir = Quaternion.Euler(transform.rotation.eulerAngles) * Vector3.right;
                 yield return new WaitForSeconds(firerates);
                 GameObject instance2 = Instantiate(Bullet, transform.position, transform.rotation);
-                instance2.GetComponent<Bullet>().dir = Quaternion.Euler(transform.rotation.eulerAngles) * Vector3.right;
+                    instance2.transform.parent = transform;
+                    instance2.GetComponent<Bullet>().dir = Quaternion.Euler(transform.rotation.eulerAngles) * Vector3.right;
 
                 yield return new WaitForSeconds(delay);
                 StartCoroutine("InstGo", delay);
@@ -54,7 +57,8 @@ public class Enemy : MonoBehaviour
                     float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                     GameObject instance1 = Instantiate(Bullet, transform.position, transform.rotation);
-                instance1.GetComponent<Bullet>().dir = Quaternion.Euler(transform.rotation.eulerAngles) * Vector3.right;
+                    instance1.transform.parent = transform;
+                    instance1.GetComponent<Bullet>().dir = Quaternion.Euler(transform.rotation.eulerAngles) * Vector3.right;
                 yield return new WaitForSeconds(delay);
                 StartCoroutine("InstGo", delay);
                 yield return new WaitForSeconds(10.0f);       
