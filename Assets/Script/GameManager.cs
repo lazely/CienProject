@@ -2,61 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager instance = null;
+
+    public bool isGameCleared;
     public const int StageNum = 8;
     public StageInfo[] Stage = new StageInfo[StageNum];
+    public int CurrentStage;
     private GameObject CurrentStageObject = null;
+    private Camera MainCamera;
 
-    public GameObject timer;
-    TextMeshPro timeText;
-    private float time;
-    private float TimeLimit = 300f; //second
-    private int CurrentStage = -1;
-    public Camera MainCamera;
-    public GameObject Player;
+    public int Score = 0;
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Start()
     {
-        timeText = timer.GetComponent<TextMeshPro>();
-        time = TimeLimit;
-        NextStage();
+        
     }
     private void Update()
     {
-        if (time <= 0)
+        if (SceneManager.GetActiveScene().name == "Cien Project")
         {
-            timeText.text = "시간초과";
-            Debug.Log("게임오버 - 타임아웃");
-        }
-        else
-        {
-            time -= Time.deltaTime; // 1/현재 프레임 (화면/s)
-            if (time < 10)
+            if (isGameCleared)
             {
-                timeText.text = "타이머 : " + $"{time:N2}";
+                isGameCleared = false;
+                MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+                NextStage();
             }
-            else
-            {
-                timeText.text = "타이머 : " + Mathf.Floor(time).ToString();
-            }
-
         }
     }
 
     public void NextStage()
     {
+        Score++;
         CurrentStage++;
-        if (CurrentStage >= 8)
+        if (CurrentStage >= StageNum)
         {
-            CurrentStage = 0;
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
         }
         Destroy(CurrentStageObject);
         CurrentStageObject = Instantiate(Stage[CurrentStage].Stage_Prefab, new Vector3(0, 0, 0), Quaternion.identity);

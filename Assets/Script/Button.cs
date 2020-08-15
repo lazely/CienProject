@@ -14,9 +14,9 @@ public class Button : MonoBehaviour
 
     IEnumerator OnOff()
     {
+        is_checked = is_checked ? false : true;
         if (special_stage)
         {
-            is_checked = is_checked ? false : true;
             if (is_checked == false)
             {
                 yield return new WaitForSeconds(interv);

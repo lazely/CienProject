@@ -13,7 +13,6 @@ public class Spike : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         button = buttonObject.GetComponent<Button>();
 
@@ -24,12 +23,12 @@ public class Spike : MonoBehaviour
     {
         if(button.is_checked == true)
         {
-            col.enabled = false;
+            this.tag = "Untagged";
             spriteRenderer.sprite = sprites[0];
         }
         else
         {
-            col.enabled = true;
+            this.tag = "Obstacle";
             spriteRenderer.sprite = sprites[1];
         }
     }

@@ -18,8 +18,9 @@ public class Bullet : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().velocity = dir * speed;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (is_pene == false && collision.gameObject.tag != "Obstacle") Destroy(this.gameObject);
+        if (is_pene != true && collision.gameObject.tag == "Wall") Destroy(this.gameObject);
     }
 }

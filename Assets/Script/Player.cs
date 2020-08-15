@@ -30,15 +30,17 @@ public class Player : MonoBehaviour
         }
         GetComponent<Rigidbody2D>().velocity = new Vector3(h, v, 0f).normalized * speed;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Obstacle")
+        if (collision.CompareTag("Obstacle"))
         {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
             Debug.Log("게임오버 (" + collision.gameObject.name + "에 충돌)");
+
         }
-        else if (collision.gameObject.tag == "Finish")
+        else if (collision.CompareTag("Finish"))
         {
-            GameManager.instance.NextStage();
+            GameManager.instance.isGameCleared = true;
             Debug.Log("성공!");
         }
     }
