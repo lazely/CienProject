@@ -7,18 +7,21 @@ public class Score : MonoBehaviour
 {
     TextMeshProUGUI ScoreText;
     //TextMeshPro ScoreText;
-    private int score;
+    private int bestscore;
+    private int currentscore;
 
     // Start is called before the first frame update
     void Start()
     {
         ScoreText = transform.GetComponent<TextMeshProUGUI>();
-        score = GameManager.instance.Score;
+        bestscore = GameManager.instance.BestScore;
+        currentscore = GameManager.instance.Score;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        ScoreText.text = score.ToString();
+        ScoreText.text = "Best Score : " + bestscore.ToString() + "\nCurrent Score : " + currentscore;
     }
 }

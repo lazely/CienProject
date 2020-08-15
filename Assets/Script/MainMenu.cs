@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ExitGame()
     {
+        PlayerPrefs.SetInt("BestScore", GameManager.instance.BestScore);
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else

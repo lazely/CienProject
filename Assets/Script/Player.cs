@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
         else if (collision.CompareTag("Finish"))
         {
             GameManager.instance.isGameCleared = true;
+            GameManager.instance.Score++;
             Debug.Log("성공!");
         }
     }

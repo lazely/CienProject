@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private Camera MainCamera;
 
     public int Score = 0;
-
+    public int BestScore = 0;
     private void Awake()
     {
         if (instance == null)
@@ -32,10 +32,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        if (PlayerPrefs.HasKey("BestScore"))
+            BestScore = PlayerPrefs.GetInt("BestScore");
     }
     private void Update()
     {
+        if(Score > BestScore)
+        {
+            BestScore = Score;
+        }
         if (SceneManager.GetActiveScene().name == "Cien Project")
         {
             if (isGameCleared)
@@ -49,7 +54,6 @@ public class GameManager : MonoBehaviour
 
     public void NextStage()
     {
-        Score++;
         CurrentStage++;
         if (CurrentStage >= StageNum)
         {
